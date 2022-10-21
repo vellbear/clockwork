@@ -1,24 +1,26 @@
-import { React, useState, useEffect } from "react";
+import { React, useEffect } from "react";
 
-function Timer() {
-  //useState to keep track of second value
-  const [seconds, setSeconds] = useState(3600);
-
+function Timer(props) {
   //Add timer that counts down by the second
   useEffect(() => {
     const interval = setInterval(() => {
-      setSeconds((time) => (time > 0 ? time - 1 : time));
+      props.setSeconds((time) => (time > 0 ? time - 1 : time));
     }, 1000);
-    console.log((3600 % 3600) + 1);
     return () => {
       clearInterval(interval);
     };
   }, []);
+
   //Convert seconds to hours minutes and seconds
   function ConvertSeconds() {
-    const hrs = Math.floor(seconds / 3600);
-    const mins = Math.floor(seconds / 60 - hrs * 60);
-    const secs = seconds - hrs * 3600 - mins * 60;
+    const hrs = Math.floor(props.seconds / 3600);
+    const mins = Math.floor(props.seconds / 60 - hrs * 60);
+    const secs = props.seconds - hrs * 3600 - mins * 60;
+    return formatTimer(hrs, mins, secs);
+  }
+
+  //Format timer
+  function formatTimer(hrs, mins, secs) {
     let formattedHours, formattedMinutes, formattedSeconds;
 
     //format hours
@@ -55,9 +57,9 @@ function Timer() {
   }
 
   return (
-    <div className="text-3xl font-semibold">
+    <div className="text-3xl font-semibold z-50">
       {/*Display timer*/}
-      {ConvertSeconds()}
+      {props.showTimer ? ConvertSeconds() : ""}
     </div>
   );
 }
