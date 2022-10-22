@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Timer from "./components/Timer";
 import ProgressBar from "./components/ProgressBar";
+import Settings from "./components/Settings";
 
 function App() {
   const [seconds, setSeconds] = useState(1500);
@@ -15,6 +16,12 @@ function App() {
         toggleTimer={toggleTimer}
         setPercentage={setPercentage}
       />
+      <Settings
+        showDisplay={showDisplay}
+        togglePercentage={togglePercentage}
+        setShowDisplay={setShowDisplay}
+        setTogglePercentage={setTogglePercentage}
+      />
       <Timer
         seconds={seconds}
         percentage={percentage}
@@ -23,28 +30,8 @@ function App() {
         togglePercentage={togglePercentage}
         setSeconds={setSeconds}
         setShowDisplay={setShowDisplay}
+        setToggleTimer={setToggleTimer}
       />
-      {/*Show/Hide Display*/}
-      <button
-        className=" border-solid border-black bg-yellow-400 border-4 p-2 font-semibold"
-        onClick={() => setShowDisplay(!showDisplay)}
-      >
-        {showDisplay ? "Hide Display" : "Show Display"}
-      </button>
-      {/*Show/Hide Percentage*/}
-      <button
-        className=" border-solid border-black bg-yellow-400 border-4 p-2 font-semibold"
-        onClick={() => setTogglePercentage(!togglePercentage)}
-      >
-        {togglePercentage ? "Show as percentage" : "Show as timer"}
-      </button>
-      {/*Start/Stop Timer*/}
-      <button
-        className=" border-solid border-black bg-yellow-400 border-4 p-2 font-semibold"
-        onClick={() => setToggleTimer(!toggleTimer)}
-      >
-        {toggleTimer ? "Start" : "Stop"}
-      </button>
     </div>
   );
 }

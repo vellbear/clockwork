@@ -2,6 +2,7 @@ import { React, useEffect, useState } from "react";
 
 function Timer(props) {
   const [currentInterval, setCurrentInterval] = useState(null);
+  const [showTimerToggle, setShowTimerToggle] = useState(true);
   //Add timer that counts down by the second
   useEffect(() => {
     toggleTimer();
@@ -69,9 +70,21 @@ function Timer(props) {
   }
 
   return (
-    <div className="text-3xl font-semibold z-50">
+    <div className="grid relative text-3xl font-semibold z-50">
       {/*Display timer*/}
-      {props.showDisplay ? toggleDisplay() : ""}
+      <div onMouseEnter={() => setShowTimerToggle(!showTimerToggle)}>
+        {props.showDisplay ? toggleDisplay() : ""}
+      </div>
+      {/*Start/Stop Timer*/}
+      <div
+        className={`${
+          showTimerToggle ? "hidden" : "grid"
+        } absolute cursor-pointer place-content-center w-full h-6 text-xl text-white border-solid border-white bg-slate-700 border-2 p-4 font-semibold`}
+        onClick={() => props.setToggleTimer(!props.toggleTimer)}
+        onMouseLeave={() => setShowTimerToggle(!showTimerToggle)}
+      >
+        {props.toggleTimer ? "Start" : "Stop"}
+      </div>
     </div>
   );
 }
