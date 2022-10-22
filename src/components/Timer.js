@@ -63,10 +63,15 @@ function Timer(props) {
     return formattedHours + formattedMinutes + formattedSeconds;
   }
 
+  function toggleDisplay() {
+    if (props.togglePercentage) return ConvertSeconds();
+    return props.percentage + "%";
+  }
+
   return (
     <div className="text-3xl font-semibold z-50">
       {/*Display timer*/}
-      {props.showTimer ? ConvertSeconds() : ""}
+      {props.showDisplay ? toggleDisplay() : ""}
     </div>
   );
 }

@@ -4,24 +4,39 @@ import ProgressBar from "./components/ProgressBar";
 
 function App() {
   const [seconds, setSeconds] = useState(1500);
-  const [showTimer, setShowTimer] = useState(true);
+  const [percentage, setPercentage] = useState(0);
+  const [showDisplay, setShowDisplay] = useState(true);
   const [toggleTimer, setToggleTimer] = useState(true);
+  const [togglePercentage, setTogglePercentage] = useState(true);
   return (
     <div className="App h-screen">
-      <ProgressBar seconds={seconds} />
+      <ProgressBar
+        seconds={seconds}
+        toggleTimer={toggleTimer}
+        setPercentage={setPercentage}
+      />
       <Timer
         seconds={seconds}
-        showTimer={showTimer}
+        percentage={percentage}
+        showDisplay={showDisplay}
         toggleTimer={toggleTimer}
+        togglePercentage={togglePercentage}
         setSeconds={setSeconds}
-        setShowTimer={setShowTimer}
+        setShowDisplay={setShowDisplay}
       />
-      {/*Show/Hide Timer*/}
+      {/*Show/Hide Display*/}
       <button
         className=" border-solid border-black bg-yellow-400 border-4 p-2 font-semibold"
-        onClick={() => setShowTimer(!showTimer)}
+        onClick={() => setShowDisplay(!showDisplay)}
       >
-        {showTimer ? "Hide" : "Show"}
+        {showDisplay ? "Hide Display" : "Show Display"}
+      </button>
+      {/*Show/Hide Percentage*/}
+      <button
+        className=" border-solid border-black bg-yellow-400 border-4 p-2 font-semibold"
+        onClick={() => setTogglePercentage(!togglePercentage)}
+      >
+        {togglePercentage ? "Show as percentage" : "Show as timer"}
       </button>
       {/*Start/Stop Timer*/}
       <button
