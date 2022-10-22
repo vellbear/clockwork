@@ -8,12 +8,20 @@ function ProgressBar(props) {
   }
   function nearestFraction() {
     //tailwind percantages in fractions: 1/6, 2/6, 3/6, 4/6, 5/6, full(6/6)
-    if (calcPercentage() === 100) return "full";
-    else if (calcPercentage() >= 83.3) return "5/6";
-    else if (calcPercentage() >= 66.6) return "4/6";
-    else if (calcPercentage() >= 50) return "3/6";
-    else if (calcPercentage() >= 33.3) return "2/6";
-    else return "1/6";
+    switch (true) {
+      case calcPercentage() >= 100:
+        return "h-full";
+      case calcPercentage() >= 83.3:
+        return "h-5/6";
+      case calcPercentage() >= 66.6:
+        return "h-4/6";
+      case calcPercentage() >= 50:
+        return "h-3/6";
+      case calcPercentage() >= 33.3:
+        return "h-2/6";
+      default:
+        return "h-1/6";
+    }
   }
   return (
     <div
@@ -21,9 +29,12 @@ function ProgressBar(props) {
     >
       {/*Display Progress Bar*/}
       <div
-        className={`h-${nearestFraction()} z-[-50] w-full bg-red-500 transition-all transform ease-in-out duration-1000`}
+        className={`${
+          nearestFraction()
+            ? nearestFraction()
+            : "h-1/6" || "h-2/6" || "h-3/6" || "h-4/6" || "h-5/6" || "h-full" //preloads tailwind heights (necessary)
+        } z-[-50] w-full bg-red-500 transition-all transform ease-in-out duration-1000`}
       ></div>
-      {console.log(nearestFraction(), calcPercentage())}
     </div>
   );
 }

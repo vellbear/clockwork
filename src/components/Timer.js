@@ -1,15 +1,22 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 
 function Timer(props) {
+  const [currentInterval, setCurrentInterval] = useState(null);
   //Add timer that counts down by the second
   useEffect(() => {
-    const interval = setInterval(() => {
-      props.setSeconds((time) => (time > 0 ? time - 1 : time));
-    }, 1000);
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+    toggleTimer();
+  }, [props.toggleTimer]);
+
+  function toggleTimer() {
+    if (!props.toggleTimer) {
+      setCurrentInterval(
+        setInterval(() => {
+          props.setSeconds((time) => (time > 0 ? time - 1 : time));
+        }, 1000)
+      );
+    }
+    if (props.toggleTimer) clearInterval(currentInterval);
+  }
 
   //Convert seconds to hours minutes and seconds
   function ConvertSeconds() {
