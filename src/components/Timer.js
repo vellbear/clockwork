@@ -70,7 +70,11 @@ function Timer(props) {
   }
 
   return (
-    <div className="grid relative place-content-center h-64 w-64 text-3xl font-semibold z-50">
+    <div
+      className={`${
+        props.showDisplay ? "grid" : "hidden"
+      } relative place-content-center h-64 w-64 text-3xl font-semibold z-50`}
+    >
       {/*Display timer*/}
       <div
         className="grid place-content-center w-64 h-64 rounded-full bg-slate-800 text-white border-4"
@@ -79,6 +83,7 @@ function Timer(props) {
         {props.showDisplay ? toggleDisplay() : ""}
       </div>
       {/*Start/Stop Timer*/}
+      {/*NOTE: Doesn't work on mobile */}
       <div
         className={`${
           showTimerToggle ? "hidden" : "grid"
