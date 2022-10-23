@@ -10,7 +10,7 @@ function App() {
   const [toggleTimer, setToggleTimer] = useState(true);
   const [togglePercentage, setTogglePercentage] = useState(true);
   return (
-    <div className="App h-screen">
+    <div className="App h-screen grid place-content-center">
       <ProgressBar
         seconds={seconds}
         toggleTimer={toggleTimer}

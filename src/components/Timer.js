@@ -70,16 +70,21 @@ function Timer(props) {
   }
 
   return (
-    <div className="grid relative text-3xl font-semibold z-50">
+    <div className="grid relative place-content-center h-64 w-64 text-3xl font-semibold z-50">
       {/*Display timer*/}
-      <div onMouseEnter={() => setShowTimerToggle(!showTimerToggle)}>
+      <div
+        className="grid place-content-center w-64 h-64 rounded-full bg-slate-800 text-white border-4"
+        onMouseEnter={() => setShowTimerToggle(!showTimerToggle)}
+      >
         {props.showDisplay ? toggleDisplay() : ""}
       </div>
       {/*Start/Stop Timer*/}
       <div
         className={`${
           showTimerToggle ? "hidden" : "grid"
-        } absolute cursor-pointer place-content-center w-full h-6 text-xl text-white border-solid border-white bg-slate-700 border-2 p-4 font-semibold`}
+        } absolute cursor-pointer place-content-center w-full h-full rounded-full text-3xl bg-slate-800 ${
+          props.toggleTimer ? "text-green-400" : "text-red-500"
+        } border-4 p-4 font-semibold`}
         onClick={() => props.setToggleTimer(!props.toggleTimer)}
         onMouseLeave={() => setShowTimerToggle(!showTimerToggle)}
       >

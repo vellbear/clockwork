@@ -14,7 +14,7 @@ function ProgressBar(props) {
 
   return (
     <div
-      className={`absolute z-[-100] grid place-items-end h-full w-full bg-sky-500`}
+      className={`absolute z-[-100] grid place-items-end h-full w-full bg-slate-800`}
     >
       {/*Display Progress Bar*/}
       <div
