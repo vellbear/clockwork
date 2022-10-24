@@ -73,25 +73,26 @@ function Timer(props) {
     <div
       className={`${
         props.showDisplay ? "grid" : "hidden"
-      } relative place-content-center h-64 w-64 text-3xl font-semibold z-50`}
+      } relative place-content-center h-72 w-72 rounded-full border-4 text-3xl font-semibold z-50`}
+      onMouseEnter={() => setShowTimerToggle(!showTimerToggle)}
     >
       {/*Display timer*/}
-      <div
-        className="grid place-content-center w-64 h-64 rounded-full bg-slate-800 text-white border-4"
-        onMouseEnter={() => setShowTimerToggle(!showTimerToggle)}
-      >
+      <div className="grid place-content-center w-full h-full rounded-full bg-slate-800 text-white">
         {props.showDisplay ? toggleDisplay() : ""}
       </div>
       {/*Start/Stop Timer*/}
       {/*NOTE: Doesn't work on mobile */}
       <div
-        className={`${
-          showTimerToggle ? "hidden" : "grid"
-        } absolute cursor-pointer place-content-center w-full h-full rounded-full text-3xl bg-slate-800 ${
+        className={`${showTimerToggle ? "hidden" : "grid"} ${
           props.toggleTimer ? "text-green-400" : "text-red-500"
-        } border-4 p-4 font-semibold`}
-        onClick={() => props.setToggleTimer(!props.toggleTimer)}
-        onMouseLeave={() => setShowTimerToggle(!showTimerToggle)}
+        } absolute cursor-pointer place-content-center w-full h-full rounded-full text-3xl bg-slate-800  p-4 font-semibold`}
+        onClick={() => {
+          props.setToggleTimer(!props.toggleTimer);
+          //setShowTimerToggle(true);
+        }}
+        onMouseLeave={() => {
+          setShowTimerToggle(!showTimerToggle);
+        }}
       >
         {props.toggleTimer ? "Start" : "Stop"}
       </div>
