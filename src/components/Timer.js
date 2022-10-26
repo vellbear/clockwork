@@ -1,4 +1,7 @@
 import { React, useEffect, useState } from "react";
+import PlaySVG from "../assets/play.svg";
+import PauseSVG from "../assets/pause.svg";
+import ResetSVG from "../assets/reset.svg";
 
 function Timer(props) {
   const [currentInterval, setCurrentInterval] = useState(null);
@@ -17,6 +20,11 @@ function Timer(props) {
       );
     }
     if (props.toggleTimer) clearInterval(currentInterval);
+  }
+
+  function resetTimer() {
+    props.setSeconds(1500);
+    props.setToggleTimer(true);
   }
 
   //Convert seconds to hours minutes and seconds
@@ -73,16 +81,33 @@ function Timer(props) {
     <div
       className={`${
         props.showDisplay ? "grid" : "hidden"
-      } relative place-content-center h-72 w-72 rounded-full border-4 text-3xl font-semibold z-50`}
+      } relative grid-flow-col items-center h-32 w-72 rounded-full bg-lime-400 border-4 border-slate-800 text-3xl font-semibold z-50`}
       onMouseEnter={() => setShowTimerToggle(!showTimerToggle)}
     >
+      {/*Reset Button*/}
+      <img
+        src={ResetSVG}
+        alt="Play Button"
+        className="grid place-self-center cursor-pointer"
+        onClick={() => resetTimer()}
+      />
       {/*Display timer*/}
-      <div className="grid place-content-center w-full h-full rounded-full bg-slate-800 text-white">
+      <div className="grid place-content-center w-full h-full text-slate-800">
         {props.showDisplay ? toggleDisplay() : ""}
       </div>
+      {/*Play/Pause Button*/}
+      <img
+        src={props.toggleTimer ? PlaySVG : PauseSVG}
+        alt="Play Button"
+        className="grid place-self-center cursor-pointer"
+        onClick={() => {
+          props.setToggleTimer(!props.toggleTimer);
+        }}
+      />
+
       {/*Start/Stop Timer*/}
       {/*NOTE: Doesn't work on mobile */}
-      <div
+      {/*<div
         className={`${showTimerToggle ? "hidden" : "grid"} ${
           props.toggleTimer ? "text-green-400" : "text-red-500"
         } absolute cursor-pointer place-content-center w-full h-full rounded-full text-3xl bg-slate-800  p-4 font-semibold`}
@@ -95,7 +120,7 @@ function Timer(props) {
         }}
       >
         {props.toggleTimer ? "Start" : "Stop"}
-      </div>
+      </div>*/}
     </div>
   );
 }
