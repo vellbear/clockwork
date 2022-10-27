@@ -55,6 +55,123 @@ function Settings(props) {
             <div className="w-11 h-6 bg-slate-500 rounded-full peer peer-checked:bg-lime-400 peer-checked:after:translate-x-full peer-checked:after:bg-slate-800 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
             <span className="ml-3">Show as percentage</span>
           </label>
+          <label for="initial-time">
+            <input
+              id="initial-time"
+              type="number"
+              pattern="[0-99{2}]"
+              maxLength="2"
+              min="0"
+              max="99"
+              className="bg-transparent border-b-white border-b-2 outline-none w-6 text-lg text-center"
+              style={{ webkitAppearance: "textfield" }}
+              onKeyDownCapture={(e) => {
+                if (e.key === "-" || e.key === ".") {
+                  e.preventDefault();
+                  return;
+                }
+                if (
+                  e.target.value.length > 1 &&
+                  (e.key === "0" ||
+                    e.key === "1" ||
+                    e.key === "2" ||
+                    e.key === "3" ||
+                    e.key === "4" ||
+                    e.key === "5" ||
+                    e.key === "6" ||
+                    e.key === "7" ||
+                    e.key === "8" ||
+                    e.key === "9")
+                )
+                  e.target.value = e.target.value.slice(0, -1);
+              }}
+              onBlur={(e) => {
+                if (
+                  e.target.value.length === 1 &&
+                  (e.target.value === "0" ||
+                    e.target.value === "1" ||
+                    e.target.value === "2" ||
+                    e.target.value === "3" ||
+                    e.target.value === "4" ||
+                    e.target.value === "5" ||
+                    e.target.value === "6" ||
+                    e.target.value === "7" ||
+                    e.target.value === "8" ||
+                    e.target.value === "9")
+                )
+                  e.target.value = 0 + e.target.value;
+              }}
+            />
+            <span className="text-lg">:</span>
+            <input
+              id="initial-time"
+              type="number"
+              pattern="[0-99{2}]"
+              maxLength="2"
+              min="0"
+              max="99"
+              className="bg-transparent border-b-white border-b-2 outline-none w-6 text-lg text-center"
+              style={{ webkitAppearance: "textfield" }}
+              onKeyDownCapture={(e) => {
+                if (e.key === "-" || e.key === ".") {
+                  e.preventDefault();
+                  return;
+                }
+                if (
+                  e.target.value.length > 1 &&
+                  (e.key === "0" ||
+                    e.key === "1" ||
+                    e.key === "2" ||
+                    e.key === "3" ||
+                    e.key === "4" ||
+                    e.key === "5" ||
+                    e.key === "6" ||
+                    e.key === "7" ||
+                    e.key === "8" ||
+                    e.key === "9")
+                )
+                  e.target.value = e.target.value.slice(0, -1);
+              }}
+            />
+            <span className="text-lg">:</span>
+            <input
+              id="initial-time"
+              type="number"
+              pattern="[0-99{2}]"
+              maxLength="2"
+              min="0"
+              max="99"
+              className="bg-transparent border-b-white border-b-2 outline-none w-6 text-lg text-center"
+              style={{ webkitAppearance: "textfield" }}
+              onKeyDownCapture={(e) => {
+                if (e.key === "-" || e.key === ".") {
+                  e.preventDefault();
+                  return;
+                }
+                if (
+                  e.target.value.length > 1 &&
+                  (e.key === "0" ||
+                    e.key === "1" ||
+                    e.key === "2" ||
+                    e.key === "3" ||
+                    e.key === "4" ||
+                    e.key === "5" ||
+                    e.key === "6" ||
+                    e.key === "7" ||
+                    e.key === "8" ||
+                    e.key === "9")
+                )
+                  e.target.value = e.target.value.slice(0, -1);
+              }}
+              onKeyUp={(e) => {
+                if (e.target.value > 59) {
+                  console.log("greater than 59");
+                  e.target.value = 59;
+                }
+              }}
+            />
+            <span className="ml-3">Set time</span>
+          </label>
         </div>
       )}
     </div>
