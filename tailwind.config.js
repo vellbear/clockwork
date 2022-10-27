@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       animation: {
         "rotate-step": "rotate 60s steps(60) infinite",
+        "rotate-step-cc": "rotatecc 60s steps(60) infinite",
       },
       keyframes: {
         rotate: {
@@ -13,6 +14,14 @@ module.exports = {
           },
           to: {
             transform: "rotate(360deg)",
+          },
+        },
+        rotatecc: {
+          from: {
+            transform: "rotate(0deg)",
+          },
+          to: {
+            transform: "rotate(-360deg)",
           },
         },
       },

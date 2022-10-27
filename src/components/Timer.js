@@ -23,7 +23,7 @@ function Timer(props) {
   }
 
   function resetTimer() {
-    props.setSeconds(1500);
+    props.setSeconds(props.initialSeconds);
     props.setToggleTimer(true);
   }
 
@@ -81,7 +81,7 @@ function Timer(props) {
     <div
       className={`${
         props.showDisplay ? "grid" : "hidden"
-      } relative grid-flow-col items-center h-32 w-72 rounded-full bg-lime-400 border-4 border-slate-800 text-3xl font-semibold z-50`}
+      } relative grid-flow-col items-center h-32 w-72 rounded-full bg-lime-400 drop-shadow-lg border-4 border-slate-800 text-3xl font-semibold z-50`}
       onMouseEnter={() => setShowTimerToggle(!showTimerToggle)}
     >
       {/*Reset Button*/}

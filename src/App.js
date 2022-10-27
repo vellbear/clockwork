@@ -4,6 +4,7 @@ import ProgressBar from "./components/ProgressBar";
 import Settings from "./components/Settings";
 
 function App() {
+  const [initialSeconds, setInintialSeconds] = useState(1500);
   const [seconds, setSeconds] = useState(1500);
   const [percentage, setPercentage] = useState(0);
   const [showDisplay, setShowDisplay] = useState(true);
@@ -13,6 +14,7 @@ function App() {
     <div className="App h-screen grid place-content-center overflow-hidden">
       <ProgressBar
         seconds={seconds}
+        initialSeconds={initialSeconds}
         toggleTimer={toggleTimer}
         setPercentage={setPercentage}
       />
@@ -21,9 +23,11 @@ function App() {
         togglePercentage={togglePercentage}
         setShowDisplay={setShowDisplay}
         setTogglePercentage={setTogglePercentage}
+        setInintialSeconds={setInintialSeconds}
       />
       <Timer
         seconds={seconds}
+        initialSeconds={initialSeconds}
         percentage={percentage}
         showDisplay={showDisplay}
         toggleTimer={toggleTimer}
