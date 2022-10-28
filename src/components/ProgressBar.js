@@ -20,7 +20,7 @@ function ProgressBar(props) {
       <Gear />
       {/*Display Progress Bar*/}
       <div
-        className={` z-[-50] w-full bg-lime-400 transition-all transform ease-in-out duration-1000`}
+        className={` z-[-50] w-full bg-[#339989] transition-all transform ease-in-out duration-1000`}
         style={{ height: calcPercentage() + "%" }}
       ></div>
     </div>
