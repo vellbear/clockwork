@@ -81,7 +81,7 @@ function Timer(props) {
     <div
       className={`${
         props.showDisplay ? "grid" : "hidden"
-      } relative grid-flow-col items-center h-32 w-72 rounded-full bg-slate-800 drop-shadow-lg border-4 border-white text-3xl font-semibold z-50`}
+      } grid-flow-col items-center h-36 w-full rounded-full bg-slate-800 drop-shadow-lg border-4 border-white text-3xl font-semibold z-50`}
       onMouseEnter={() => setShowTimerToggle(!showTimerToggle)}
     >
       {/*Reset Button*/}

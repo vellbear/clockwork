@@ -12,19 +12,43 @@ function Settings(props) {
     props.setSeconds(props.initialSeconds);
   }, [props.initialSeconds]);
 
+  function convertedInitialSeconds(type) {
+    const hours = Math.floor(props.initialSeconds / 3600);
+    const minutes = Math.floor(props.initialSeconds / 60 - hours * 60);
+    const seconds = props.initialSeconds - hours * 3600 - minutes * 60;
+
+    if (type === "getHours") return formatTime(hours);
+    if (type === "getMinutes") return formatTime(minutes);
+    if (type === "getSeconds") return formatTime(seconds);
+    return;
+  }
+  function formatTime(value) {
+    if (value < 10) return "0" + value;
+    return value;
+  }
+
   //Forward Ref required to use useRef for a functional component
   const TimerInput = forwardRef((props, ref) => {
     const max = props.maxValue ? props.maxValue : 99;
+    const [value, setValue] = useState("00");
+    useEffect(() => {
+      setValue(props.value);
+    }, [props.value]);
+
     return (
       <input
         ref={ref}
+        value={value}
         type="number"
         pattern="[0-99{2}]"
         maxLength="2"
         min="0"
         max="99"
         className="bg-transparent border-b-white border-b-2 outline-none w-6 text-lg text-center"
-        style={{ webkitAppearance: "textfield" }}
+        style={{ WebkitAppearance: "textfield" }}
+        onChange={(e) => {
+          setValue(e.target.value);
+        }}
         onKeyDownCapture={(e) => {
           if (e.key === "-" || e.key === ".") {
             e.preventDefault();
@@ -122,16 +146,27 @@ function Settings(props) {
             <div className="w-11 h-6 bg-slate-500 rounded-full peer peer-checked:bg-[#339989] peer-checked:after:translate-x-full peer-checked:after:bg-slate-800 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
             <span className="ml-3">Show as percentage</span>
           </label>
+          {/*TODO: add warning that setting initial timer cannot be edited white timer is active*/}
           <div className="grid">
             <label>
               {/*Hours*/}
-              <TimerInput ref={hoursInputRef} />
+              <TimerInput
+                ref={hoursInputRef}
+                value={convertedInitialSeconds("getHours")}
+              />
               <span className="text-lg">:</span>
               {/*Minutes*/}
-              <TimerInput ref={minutesInputRef} />
+              <TimerInput
+                ref={minutesInputRef}
+                value={convertedInitialSeconds("getMinutes")}
+              />
               <span className="text-lg">:</span>
               {/*Seconds*/}
-              <TimerInput ref={secondsInputRef} maxValue={59} />
+              <TimerInput
+                ref={secondsInputRef}
+                value={convertedInitialSeconds("getSeconds")}
+                maxValue={59}
+              />
               <span className="ml-3">Set time</span>
             </label>
             <br></br>
@@ -143,12 +178,6 @@ function Settings(props) {
                   hoursInputRef.current.value * 3600 +
                     minutesInputRef.current.value * 60 +
                     secondsInputRef.current.value * 1
-                );
-                console.log(
-                  hoursInputRef.current.value * 3600 +
-                    minutesInputRef.current.value * 60 +
-                    secondsInputRef.current.value * 1,
-                  props.initialSeconds
                 );
               }}
             >

@@ -12,7 +12,13 @@ function App() {
   const [togglePercentage, setTogglePercentage] = useState(true);
 
   return (
-    <div className="App h-screen grid place-content-center overflow-hidden">
+    <div className="App h-screen w-screen relative grid place-content-center overflow-hidden">
+      {/*Title*/}
+      <div className="absolute w-full">
+        <h1 className="absolute text-white text-2xl text-center w-fit font-mono font-bold tracking-widest left-8 top-8">
+          ClOcKwOrK
+        </h1>
+      </div>
       <ProgressBar
         seconds={seconds}
         initialSeconds={initialSeconds}
@@ -28,22 +34,19 @@ function App() {
         setInitialSeconds={setInitialSeconds}
         setSeconds={setSeconds}
       />
-      <div className="grid w-full">
-        <h1 className="text-white text-5xl text-center font-mono font-bold tracking-widest pb-16">
-          ClOcKwOrK
-        </h1>
+      <div className="w-[calc(100vw-4rem)] max-w-[32rem]">
+        <Timer
+          seconds={seconds}
+          initialSeconds={initialSeconds}
+          percentage={percentage}
+          showDisplay={showDisplay}
+          toggleTimer={toggleTimer}
+          togglePercentage={togglePercentage}
+          setSeconds={setSeconds}
+          setShowDisplay={setShowDisplay}
+          setToggleTimer={setToggleTimer}
+        />
       </div>
-      <Timer
-        seconds={seconds}
-        initialSeconds={initialSeconds}
-        percentage={percentage}
-        showDisplay={showDisplay}
-        toggleTimer={toggleTimer}
-        togglePercentage={togglePercentage}
-        setSeconds={setSeconds}
-        setShowDisplay={setShowDisplay}
-        setToggleTimer={setToggleTimer}
-      />
     </div>
   );
 }
