@@ -5,7 +5,6 @@ import ResetSVG from "../assets/reset.svg";
 
 function Timer(props) {
   const [currentInterval, setCurrentInterval] = useState(null);
-  const [showTimerToggle, setShowTimerToggle] = useState(true);
   //Add timer that counts down by the second
   useEffect(() => {
     toggleTimer();
@@ -81,8 +80,7 @@ function Timer(props) {
     <div
       className={`${
         props.showDisplay ? "grid" : "hidden"
-      } grid-flow-col items-center h-36 w-full rounded-full bg-slate-800 drop-shadow-lg border-4 border-white text-3xl font-semibold z-50`}
-      onMouseEnter={() => setShowTimerToggle(!showTimerToggle)}
+      } grid-flow-col items-center h-36 w-full rounded-full bg-slate-800 drop-shadow-lg border-4 border-white text-4xl font-semibold z-50`}
     >
       {/*Reset Button*/}
       <img
@@ -104,23 +102,6 @@ function Timer(props) {
           props.setToggleTimer(!props.toggleTimer);
         }}
       />
-
-      {/*Start/Stop Timer*/}
-      {/*NOTE: Doesn't work on mobile */}
-      {/*<div
-        className={`${showTimerToggle ? "hidden" : "grid"} ${
-          props.toggleTimer ? "text-green-400" : "text-red-500"
-        } absolute cursor-pointer place-content-center w-full h-full rounded-full text-3xl bg-slate-800  p-4 font-semibold`}
-        onClick={() => {
-          props.setToggleTimer(!props.toggleTimer);
-          //setShowTimerToggle(true);
-        }}
-        onMouseLeave={() => {
-          setShowTimerToggle(!showTimerToggle);
-        }}
-      >
-        {props.toggleTimer ? "Start" : "Stop"}
-      </div>*/}
     </div>
   );
 }

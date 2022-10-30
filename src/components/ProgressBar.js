@@ -15,9 +15,9 @@ function ProgressBar(props) {
 
   return (
     <div
-      className={`absolute z-[-100] grid place-items-end h-full w-full bg-slate-800 overflow-hidden`}
+      className={`absolute z-[-100] grid place-items-end h-full w-full bg-[#e7e5df] overflow-hidden`}
     >
-      <Gear />
+      <Gear toggleTimer={props.toggleTimer} />
       {/*Display Progress Bar*/}
       <div
         className={` z-[-50] w-full bg-[#339989] transition-all transform ease-in-out duration-1000`}
