@@ -85,6 +85,7 @@ function Timer(props) {
       {/*Reset Button*/}
       <img
         src={ResetSVG}
+        title="Click to restart the timer"
         alt="Play Button"
         className="grid place-self-center cursor-pointer"
         onClick={() => resetTimer()}
@@ -96,6 +97,11 @@ function Timer(props) {
       {/*Play/Pause Button*/}
       <img
         src={props.toggleTimer ? PlaySVG : PauseSVG}
+        title={
+          props.toggleTimer
+            ? "Click to start the timer"
+            : "Click to pause the timer"
+        }
         alt="Play Button"
         className="grid place-self-center cursor-pointer"
         onClick={() => {

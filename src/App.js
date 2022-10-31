@@ -27,6 +27,7 @@ function App() {
       />
       <Settings
         showDisplay={showDisplay}
+        toggleTimer={toggleTimer}
         togglePercentage={togglePercentage}
         initialSeconds={initialSeconds}
         setShowDisplay={setShowDisplay}
