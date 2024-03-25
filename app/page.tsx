@@ -1,9 +1,11 @@
+"use client";
 import { useState } from "react";
-import Timer from "./components/Timer";
-import ProgressBar from "./components/ProgressBar";
-import Settings from "./components/Settings";
 
-function App() {
+import Timer from "../components/Timer";
+import ProgressBar from "../components/ProgressBar";
+import Settings from "../components/Settings";
+
+export default function Home() {
   const [initialSeconds, setInitialSeconds] = useState(1500);
   const [seconds, setSeconds] = useState(1500);
   const [percentage, setPercentage] = useState(0);
@@ -12,10 +14,10 @@ function App() {
   const [togglePercentage, setTogglePercentage] = useState(true);
 
   return (
-    <div className="App h-screen w-screen relative grid place-content-center overflow-hidden">
+    <div className="relative grid w-screen h-screen overflow-hidden App place-content-center">
       {/*Title*/}
       <div className="absolute w-full">
-        <h1 className="absolute text-slate-800 text-2xl text-center w-fit font-mono font-bold tracking-widest left-8 top-8">
+        <h1 className="absolute font-mono text-2xl font-bold tracking-widest text-center text-slate-800 w-fit left-8 top-8">
           ClOcKwOrK
         </h1>
       </div>
@@ -51,5 +53,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

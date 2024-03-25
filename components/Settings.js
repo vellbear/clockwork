@@ -1,4 +1,5 @@
-import { React, useState, useEffect, useRef, forwardRef } from "react";
+import { useState, useEffect, useRef, forwardRef } from "react";
+import Image from "next/image";
 import ExitSVG from "../assets/exit.svg";
 import SettingsSVG from "../assets/settings.svg";
 
@@ -114,7 +115,7 @@ function Settings(props) {
       className="absolute right-0 mr-4 mt-4"
     >
       {toggleSettings ? (
-        <img
+        <Image
           src={SettingsSVG}
           alt="settings.svg"
           className="cursor-pointer p-4"
@@ -123,7 +124,7 @@ function Settings(props) {
       ) : (
         <div className="grid gap-2 p-4 max-w-xs border-2 bg-slate-800 border-white drop-shadow-lg text-white text-sm font-medium">
           {/*Show/Hide Display*/}
-          <img
+          <Image
             src={ExitSVG}
             title="Click to close the settings menu"
             alt="exit.svg"

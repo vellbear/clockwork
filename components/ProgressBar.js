@@ -1,4 +1,3 @@
-import { React } from "react";
 import Gear from "./Gear";
 
 function ProgressBar(props) {

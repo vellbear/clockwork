@@ -1,4 +1,5 @@
-import { React, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 import PlaySVG from "../assets/play.svg";
 import PauseSVG from "../assets/pause.svg";
 import ResetSVG from "../assets/reset.svg";
@@ -83,7 +84,7 @@ function Timer(props) {
       } grid-flow-col items-center h-36 w-full rounded-full bg-slate-800 drop-shadow-lg border-4 border-white text-4xl font-semibold z-50`}
     >
       {/*Reset Button*/}
-      <img
+      <Image
         src={ResetSVG}
         title="Click to restart the timer"
         alt="Play Button"
@@ -95,7 +96,7 @@ function Timer(props) {
         {props.showDisplay ? toggleDisplay() : ""}
       </div>
       {/*Play/Pause Button*/}
-      <img
+      <Image
         src={props.toggleTimer ? PlaySVG : PauseSVG}
         title={
           props.toggleTimer
